@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tower</string>
+    <string name="service">The service is used to request for the notification from server.</string>
+    <string name="channel_name">TowerNotif channel</string>
+    <string name="channel_des">TowerNotif channel des</string>
+    <string name="congratulation">Congratulation, welcome to join us</string>
+</resources>
