@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity {
                                 RequestBody body = RequestBody.create(JSON, strs[0]);
                                 OkHttpClient client = new OkHttpClient();
                                 Request request = new Request.Builder()
-                                        .url("http://121.199.62.201:8080/login")
+                                        .url("http://121.199.62.201:8080/login/" + strs[0])
                                         .post(body)
                                         .build();
                                 try (Response response = client.newCall(request).execute()) {
