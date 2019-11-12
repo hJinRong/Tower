@@ -17,9 +17,7 @@ public class RequestForNotification extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        /*Intent mintent = new Intent(this, MainActivity.class);
-        mintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, mintent, 0);*/
+
 
         createNotificationChannel();
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, getString(R.string.channel_id))
