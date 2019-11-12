@@ -28,11 +28,11 @@
             </intent-filter>
         </activity>
 
-        <!--<service
+        <service
             android:name=".RequestForNotification"
             android:description="@string/service"
             android:enabled="true"
-            android:exported="false" />-->
+            android:exported="false"></service>
 
         <activity android:name=".MainActivity">
             <intent-filter>
