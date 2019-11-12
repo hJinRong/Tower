@@ -1,7 +1,5 @@
 package com.example.tower.Character;
 
-import androidx.annotation.NonNull;
-
 public class User {
     private String name, account, password;
 
@@ -49,9 +47,8 @@ public class User {
     }
 
 
-    @NonNull
     @Override
     public String toString() {
-        return "{" + "\"name\":" + name + "," + "\"account\":" + account + "," + "\"password\":" + password + "}";
+        return "{" + "\"name\":" + "\"" + name + "\"" + "," + "\"account\":" + "\"" + account + "\"" + "," + "\"password\":" + "\"" + password + "\"" + "}";
     }
 }
