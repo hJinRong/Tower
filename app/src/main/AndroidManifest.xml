@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:networkSecurityConfig="@xml/network_security_config">
+        <activity android:name=".mine" />
         <activity android:name=".Register_2" />
         <activity android:name=".Register_1">
             <intent-filter>
