@@ -4,4 +4,5 @@
     <string name="channel_name">TowerNotif channel</string>
     <string name="channel_des">TowerNotif channel des</string>
     <string name="congratulation">Congratulation, welcome to join us</string>
+    <string name="mine">个人中心</string>
 </resources>
