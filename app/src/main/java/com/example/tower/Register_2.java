@@ -1,7 +1,5 @@
 package com.example.tower;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tower.Character.User;
 
@@ -54,7 +54,7 @@ public class Register_2 extends AppCompatActivity {
 
                     @Override
                     public void afterTextChanged(Editable editable) {
-                        if (!account.getText().equals("")) {
+                        if (!account.getText().toString().equals("")) {
                             password.setVisibility(View.VISIBLE);
                         } else {
                             password.setVisibility(View.INVISIBLE);
@@ -77,7 +77,7 @@ public class Register_2 extends AppCompatActivity {
 
                     @Override
                     public void afterTextChanged(Editable editable) {
-                        if (!password.getText().equals("")) {
+                        if (!password.getText().toString().equals("")) {
                             sendRegistrationRequest.setVisibility(View.VISIBLE);
                         } else {
                             sendRegistrationRequest.setVisibility(View.INVISIBLE);
@@ -105,12 +105,14 @@ public class Register_2 extends AppCompatActivity {
                                     RequestBody body = RequestBody.create(JSON, strings[0]);
                                     OkHttpClient client = new OkHttpClient();
                                     Request request = new Request.Builder()
-                                            .url("http://121.199.62.201:8080/register")
+                                            .url("http://121.199.62.201:8080/register/" + strings[0])
                                             .post(body)
                                             .build();
                                     try (Response response = client.newCall(request).execute()) {
                                         resBackFromServer = response.body().string();
                                     } catch (IOException e) {
+                                        e.printStackTrace();
+                                    } catch (NullPointerException e) {
                                         e.printStackTrace();
                                     }
                                     return resBackFromServer;
