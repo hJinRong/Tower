@@ -11,14 +11,12 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity
-            android:name=".PersonalCenter"
-            android:label="@string/title_activity_personal_center"
-            android:theme="@style/NoActionBar"></activity>
+        android:theme="@style/AppTheme">
         <activity android:name=".NotificationList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <!--                <category android:name="android.intent.category.LAUNCHER" />-->
             </intent-filter>
         </activity>
         <activity android:name=".Register_2" />
@@ -30,6 +28,8 @@
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
             </intent-filter>
         </activity>
 
@@ -40,6 +40,12 @@
             android:exported="false" />
 
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".mine">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
