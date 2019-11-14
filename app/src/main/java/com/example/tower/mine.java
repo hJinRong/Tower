@@ -39,7 +39,7 @@ public class mine extends Activity {
                     startActivity(intent);
                     break;
                 case "个人信息":
-                    Intent intent1 = new Intent(mine.this, Register_1.class);
+                    Intent intent1 = new Intent(mine.this, personal_data.class);
                     startActivity(intent1);
                     break;
                 case "充值":
