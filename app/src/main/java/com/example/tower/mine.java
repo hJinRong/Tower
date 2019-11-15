@@ -43,8 +43,8 @@ public class mine extends Activity {
                     startActivity(intent1);
                     break;
                 case "充值":
-                    Intent intent2 = new Intent(mine.this, Login.class);
-                    startActivity(intent2);
+                    /*Intent intent2 = new Intent(mine.this, Login.class);
+                    startActivity(intent2);*/
                     break;
             }
 
