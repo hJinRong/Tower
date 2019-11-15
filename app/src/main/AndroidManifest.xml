@@ -40,12 +40,12 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".mine">
+        <activity android:name=".PersonalCenter">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".personal_data">
+        <activity android:name=".ModifyUserInformation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

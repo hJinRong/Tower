@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class personal_data extends Activity {
+public class ModifyUserInformation extends Activity {
     private Button btn;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class personal_data extends Activity {
 
     class mClick implements View.OnClickListener {
         public void onClick(View v) {
-            Intent intent = new Intent(personal_data.this, mine.class);
+            Intent intent = new Intent(ModifyUserInformation.this, PersonalCenter.class);
             startActivity(intent);
         }
     }
