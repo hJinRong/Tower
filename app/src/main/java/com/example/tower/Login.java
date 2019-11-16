@@ -1,6 +1,8 @@
 package com.example.tower;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -58,6 +60,11 @@ public class Login extends AppCompatActivity {
                             @Override
                             protected void onPostExecute(String res) {
                                 if (res.equals("CHECKED")) {
+                                    /*把帐号通过SharedPreferences 存起来，将会被删除，不同Activity不能获取同一个sp*/
+                                    SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sp.edit();
+                                    editor.putString(getString(R.string.useraccount), account.getText().toString());
+                                    editor.commit();
                                     Intent intent = new Intent(Login.this, MainActivity.class);
                                     startActivity(intent);
                                 }

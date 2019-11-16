@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EBE8E9"
+    tools:context=".Recharge">
+
+    <Button
+        android:id="@+id/rechargeNow"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="立即充值"
+        android:textSize="26dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/showAmount"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#FFF0F5"
+            android:text="尊敬的用户，您的账户余额："
+            android:textColor="#0E0D0D"
+            android:textSize="18.5dp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:background="#FAF7F7"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+
+        <ImageView
+            android:id="@+id/wx_img"
+            android:layout_width="141dp"
+            android:layout_height="103dp"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_marginLeft="89dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginRight="100dip"
+            android:layout_toRightOf="@+id/alipay_img"
+            app:srcCompat="@drawable/weixin" />
+
+        <ImageView
+            android:id="@+id/alipay_img"
+            android:layout_width="123dp"
+            android:layout_height="71dp"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_marginTop="104dp"
+            app:srcCompat="@drawable/zhifubao" />
+
+        <Button
+            android:id="@+id/checked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customAmount"
+            android:layout_alignParentRight="true"
+            android:text="确认" />
+
+        <TextView
+            android:id="@+id/tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="账户充值"
+            android:textColor="#0E0D0D"
+            android:textSize="18.5dp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="300dp"
+            android:layout_height="65dp"
+            android:layout_below="@+id/tip"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tenYuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_line_while"
+                android:text="10元" />
+
+            <Button
+                android:id="@+id/fiftyYuan"
+                android:layout_width="73dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_line_while"
+                android:text="50元" />
+
+            <Button
+                android:id="@+id/aHundredYuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_line_while"
+                android:text="100元" />
+
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/customAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/linearLayout2"
+            android:layout_marginLeft="11dp"
+            android:layout_toRightOf="@+id/linearLayout2"
+            android:ems="10"
+            android:hint="自定数额"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tip_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout2"
+            android:text="充值金额"
+            android:textColor="#0E0D0D"
+            android:textSize="18.5dp" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tip_2"
+            android:layout_marginTop="15dp"
+            android:background="#303F9F" />
+
+        <TextView
+            android:id="@+id/rechargeMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line"
+            android:text="充值方式"
+            android:textColor="#0E0D0D"
+            android:textSize="18.5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/rechargeMethod"
+            android:layout_marginTop="-2dp">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/alipay_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="支付宝"
+                    android:textSize="18.5dp" />
+
+
+                <RadioButton
+                    android:id="@+id/wx_radio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="微信"
+                    android:textSize="18.5dp" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/howManyRecharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tip_2"
+            android:layout_toRightOf="@+id/tip_2"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+</RelativeLayout>

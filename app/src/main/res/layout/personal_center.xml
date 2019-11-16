@@ -9,7 +9,7 @@
     tools:context=".Register_1">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/pageTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#00BCD4"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/wx_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/background_img"
@@ -37,10 +37,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/wx_img"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintTop_toBottomOf="@+id/pageTitle" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

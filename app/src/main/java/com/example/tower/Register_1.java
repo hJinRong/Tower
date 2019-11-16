@@ -15,7 +15,6 @@ public class Register_1 extends AppCompatActivity {
     String content;
     EditText name;
     Button toNextPage;
-    String tem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

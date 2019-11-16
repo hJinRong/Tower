@@ -15,7 +15,7 @@ public class PersonalCenter extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mine);
+        setContentView(R.layout.personal_center);
         list = (ListView) findViewById(R.id.list1);
         String[] data = {
                 "昵称",
@@ -43,8 +43,8 @@ public class PersonalCenter extends Activity {
                     startActivity(intent1);
                     break;
                 case "充值":
-                    /*Intent intent2 = new Intent(PersonalCenter.this, Login.class);
-                    startActivity(intent2);*/
+                    Intent intent2 = new Intent(PersonalCenter.this, Recharge.class);
+                    startActivity(intent2);
                     break;
             }
 
