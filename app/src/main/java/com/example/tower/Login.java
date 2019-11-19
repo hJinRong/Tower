@@ -26,7 +26,7 @@ import okhttp3.Response;
 public class Login extends AppCompatActivity {
 
     EditText account, password;
-    Button loginBtn;
+    Button loginBtn, registerBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class Login extends AppCompatActivity {
         account = (EditText) findViewById(R.id.account);
         password = (EditText) findViewById(R.id.password);
         loginBtn = (Button) findViewById(R.id.loginBtn);
+        registerBtn = (Button) findViewById(R.id.registerBtn);
 
         AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "userinfo").allowMainThreadQueries().build();
 
@@ -78,6 +79,17 @@ public class Login extends AppCompatActivity {
                         user.setPassword(password.getText().toString());
                         user.setName("");   //ADVOI NULLPOINTEREXCEPTION
                         new LoginTask().execute(user.toString());
+                    }
+                }
+        );
+
+//        注册页面跳转，直接跳转至注册页面
+        registerBtn.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Login.this, Register_1.class);
+                        startActivity(intent);
                     }
                 }
         );

@@ -27,9 +27,7 @@
         </activity>
         <activity android:name=".Register_2" />
         <activity android:name=".Login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".NotificationList">
             <intent-filter>
