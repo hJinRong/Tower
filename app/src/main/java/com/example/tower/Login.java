@@ -68,7 +68,13 @@ public class Login extends AppCompatActivity {
                                     //UserInfo userInfo=new UserInfo();
                                     Gson gson = new Gson();
                                     UserInfo userInfo = gson.fromJson(res, UserInfo.class);
-                                    db.userInfoDao().insertOne(userInfo);
+                                    if (db.userInfoDao().getAll() == null) {
+                                        db.userInfoDao().insertOne(userInfo);
+                                    } else {
+                                        db.userInfoDao().deleteAll(db.userInfoDao().getAll());
+                                        db.userInfoDao().insertOne(userInfo);
+                                    }
+
                                     Intent intent = new Intent(Login.this, MainActivity.class);
                                     startActivity(intent);
                                 }

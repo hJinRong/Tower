@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.room.Room;
 
-import com.example.tower.Character.UserInformation;
 import com.example.tower.Db.AppDatabase;
 import com.example.tower.Db.UserInfo;
 import com.google.gson.Gson;
@@ -32,10 +31,11 @@ public class ModifyUserInformation extends Activity {
     private String gender;
     private RadioButton female, male;
     AppDatabase db;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.modify_user_information);
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "userinfo").build();
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "userinfo").allowMainThreadQueries().build();
         btn = (Button) findViewById(R.id.button);
         btn.setOnClickListener(new mClick());
         name = (EditText) findViewById(R.id.name);
@@ -48,35 +48,7 @@ public class ModifyUserInformation extends Activity {
         female = (RadioButton) findViewById(R.id.female);
         male = (RadioButton) findViewById(R.id.male);
 
-        //TODO 等待补充从数据库拉取数据填充
-        /*class FetchDataFromServer extends AsyncTask<String,Integer,String> {
-            @Override
-            protected void onPostExecute(String res) {
-                if(!res.equals("FAILED")) {
-                    UserInfo userInfo = new Gson().fromJson(res, UserInfo.class);
-
-                }
-            }
-
-            @Override
-            protected String doInBackground(String... strs) {
-                final MediaType JSON = MediaType.get("application/json; charset=utf-8");
-                String resBackFromServer = null;
-                RequestBody body = RequestBody.create(JSON, strs[0]);
-                OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder()
-                        .url("http://121.199.62.201:8080/login/" + strs[0])
-                        .post(body)
-                        .build();
-                try (Response response = client.newCall(request).execute()) {
-                    resBackFromServer = response.body().string();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return resBackFromServer;
-            }
-        }*/
-
+        /*从数据库获取数据*/
         UserInfo userInfo = db.userInfoDao().getAll();
         name.setText(userInfo.name);
         no.setText(userInfo.no);
@@ -107,16 +79,15 @@ public class ModifyUserInformation extends Activity {
                     imajor = major.getText().toString(),
                     idor = dormitory.getText().toString();
 
-            UserInformation information = new UserInformation();
-            information.setName(iname);
-            information.setNo(ino);
-            information.setGender(igender);
-            information.setEduStartDate(ieduStartDate);
-            information.setFaculty(ifaculty);
-            information.setMajor(imajor);
-            information.setDormitory(idor);
-            String infoJson = new Gson().toJson(information);
-
+            UserInfo userInfo = db.userInfoDao().getAll();
+            userInfo.name = iname;
+            userInfo.gender = igender;
+            userInfo.no = ino;
+            userInfo.eduStartDay = ieduStartDate;
+            userInfo.faculty = ifaculty;
+            userInfo.major = imajor;
+            userInfo.dormitory = idor;
+            String infoJson = new Gson().toJson(userInfo);
 
             class ModifyUserInformationTask extends AsyncTask<String, Integer, String> {
                 @Override
