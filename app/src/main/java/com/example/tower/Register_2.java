@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,7 +30,6 @@ import okhttp3.Response;
 
 public class Register_2 extends AppCompatActivity {
 
-    TextView userName;
     EditText account, password, name, username;
     Button sendRegistrationRequest;
     String content;
@@ -51,8 +49,6 @@ public class Register_2 extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 //        原来用于数据交互的代码
         String call = getIntent().getStringExtra("username");
-        userName = (TextView) findViewById(R.id.userName);
-        userName.setText(call);
         username = (EditText) findViewById(R.id.username);
         account = (EditText) findViewById(R.id.account);
         password = (EditText) findViewById(R.id.password);
@@ -119,7 +115,7 @@ public class Register_2 extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (!account.getText().equals("") && !password.getText().equals("") && !username.getText().equals("")) {
+                        if (!(account.getText().toString().length() == 0) && !(password.getText().toString().length() == 0) && !(username.getText().toString().length() == 0)) {
                             String acc = account.getText().toString(),
                                     pwd = password.getText().toString();
                             User user = new User();
@@ -159,6 +155,8 @@ public class Register_2 extends AppCompatActivity {
                                 }
                             }
                             new RegisterTask().execute(user.toString());
+                        } else {
+                            Toast.makeText(Register_2.this, "请输入完整的信息以进行注册", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
