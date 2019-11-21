@@ -16,7 +16,6 @@
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -27,7 +26,9 @@
         </activity>
         <activity android:name=".Register_2" />
         <activity android:name=".Login">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
         <activity android:name=".NotificationList">
             <intent-filter>
@@ -47,8 +48,6 @@
         <activity android:name=".ModifyUserInformation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
