@@ -1,7 +1,6 @@
 package com.example.tower;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.example.tower.Character.UserRecharge;
+import com.example.tower.Db.AppDatabase;
+import com.example.tower.Db.UserInfo;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -26,9 +28,10 @@ import okhttp3.Response;
 public class Recharge extends AppCompatActivity {
     Button aHundredYuan, fiftyYuan, tenYuan, checked, rechargeNow;
     EditText customAmount;
-    TextView howManyRecharge;
+    TextView howManyRecharge, showAmount;
     BigDecimal temFigure;
     String temAccount;
+    AppDatabase db;
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     @Override
@@ -41,8 +44,12 @@ public class Recharge extends AppCompatActivity {
         tenYuan = (Button) findViewById(R.id.tenYuan);
         checked = (Button) findViewById(R.id.checked);
         howManyRecharge = (TextView) findViewById(R.id.howManyRecharge);
+        showAmount = (TextView) findViewById(R.id.showAmount);
         rechargeNow = (Button) findViewById(R.id.rechargeNow);
 
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "userinfo").allowMainThreadQueries().build();
+        UserInfo userInfo = db.userInfoDao().getAll();
+        temAccount = userInfo.account;
         /*监听三个不同金额选项*/
         aHundredYuan.setOnClickListener(new handleClick());
         fiftyYuan.setOnClickListener(new handleClick());
@@ -53,11 +60,6 @@ public class Recharge extends AppCompatActivity {
 
         /*充值提交*/
         rechargeNow.setOnClickListener(new rechargeNow());
-
-        /*下面将会被删除*/
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        temAccount = sharedPref.getString(getString(R.string.useraccount), "aaa");
-
     }
 
     class handleClick implements View.OnClickListener {
@@ -117,10 +119,15 @@ public class Recharge extends AppCompatActivity {
                     }
 
                     @Override
-                    protected void onPostExecute(String s) {
-                        if (s.equals("SUCCESS")) {
-                            Toast.makeText(Recharge.this, "Success!", Toast.LENGTH_LONG);
+                    protected void onPostExecute(String res) {
+                        if (!res.equals("FAILED")) {
+                            Toast.makeText(Recharge.this, "充值成功!", Toast.LENGTH_LONG);
                         }
+                        Intent intent = new Intent(Recharge.this, RequestForNotification.class);
+                        showAmount.setText("尊敬的用户，您的账户余额：" + res);
+                        intent.putExtra("TITLE", "充值反馈");
+                        intent.putExtra("CONTENT_TEXT", "目前账号余额为：" + res + "元");
+                        startService(intent);
                     }
                 }
                 UserRecharge userRecharge = new UserRecharge();

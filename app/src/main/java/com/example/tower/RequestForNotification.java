@@ -21,9 +21,9 @@ public class RequestForNotification extends Service {
 
         createNotificationChannel();
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, getString(R.string.channel_id))
-                .setContentTitle("Title")
+                .setContentTitle(intent.getStringExtra("TITLE"))
                 .setSmallIcon(R.drawable.water)
-                .setContentText("This is a very looooooooooooooong notification.")
+                .setContentText(intent.getStringExtra("CONTENT_TEXT"))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setAutoCancel(true);  //Required, for support for 7.1 and lower
