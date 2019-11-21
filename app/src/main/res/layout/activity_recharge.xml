@@ -68,7 +68,7 @@
             android:layout_height="71dp"
             android:layout_below="@+id/linearLayout2"
             android:layout_marginTop="104dp"
-            app:srcCompat="@drawable/zhifubao" />
+            app:srcCompat="@drawable/alipay" />
 
         <Button
             android:id="@+id/checked"
