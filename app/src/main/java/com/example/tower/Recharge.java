@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -133,6 +134,11 @@ public class Recharge extends AppCompatActivity {
                         intent.putExtra("TITLE", "充值反馈");
                         intent.putExtra("CONTENT_TEXT", "目前账号余额为：" + res + "元");
                         startService(intent);
+
+                        Intent calendar = new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
+                                .putExtra(CalendarContract.Events.TITLE, "Recharge")
+                                .putExtra(CalendarContract.Events.DESCRIPTION, "充值后余额为：" + res);
+                        startActivity(calendar);
                     }
                 }
                 UserRecharge userRecharge = new UserRecharge();
