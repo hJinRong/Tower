@@ -1,13 +1,16 @@
 package com.example.tower;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
 
 public class PersonalCenter extends Activity {
     ListView list;
@@ -26,6 +29,11 @@ public class PersonalCenter extends Activity {
         list.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data));
         //为ListView设置列表选项监听器
         list.setOnItemClickListener(new mItemClick());
+
+        BroadcastReceiver lor = new LastOpportunity();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_BATTERY_LOW);
+        this.registerReceiver(lor, filter);
     }
 
     // 定义列表选项监听器事件

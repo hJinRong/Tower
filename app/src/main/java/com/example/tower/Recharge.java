@@ -1,6 +1,8 @@
 package com.example.tower;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -60,7 +62,10 @@ public class Recharge extends AppCompatActivity {
 
         /*充值提交*/
         rechargeNow.setOnClickListener(new rechargeNow());
+
+        new FetchFigure().execute(temAccount);
     }
+
 
     class handleClick implements View.OnClickListener {
         @Override
@@ -136,6 +141,37 @@ public class Recharge extends AppCompatActivity {
 
                 new RechargeTask().execute(userRecharge.toString());
             }
+        }
+    }
+
+    class FetchFigure extends AsyncTask<String, Integer, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String resBackFromServer = null;
+            RequestBody body = RequestBody.create(JSON, strings[0]);
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url("http://121.199.62.201:8080/checkBalance/" + strings[0])
+                    .post(body)
+                    .build();
+            try (Response response = client.newCall(request).execute()) {
+                resBackFromServer = response.body().string();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+            return resBackFromServer;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.tem_figure), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("myfigure", s);
+            editor.commit();
+            showAmount.setText(showAmount.getText() + sharedPreferences.getString("myfigure", "0.0"));
         }
     }
 }
