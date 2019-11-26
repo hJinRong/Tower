@@ -75,7 +75,7 @@ public class Login extends AppCompatActivity {
                                         db.userInfoDao().insertOne(userInfo);
                                     }
 
-                                    Intent intent = new Intent(Login.this, MainActivity.class);
+                                    Intent intent = new Intent(Login.this, PersonalCenter.class);
                                     startActivity(intent);
                                 }
                             }

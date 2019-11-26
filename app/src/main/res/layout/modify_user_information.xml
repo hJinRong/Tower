@@ -12,7 +12,7 @@
         android:id="@+id/pageTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#43A8E6"
+        android:background="#2B2B2B"
         android:gravity="center_horizontal"
         android:text="@string/Update_User"
         android:textColor="#ffffff"

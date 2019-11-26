@@ -11,17 +11,26 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.room.Room;
+
+import com.example.tower.Db.AppDatabase;
+import com.example.tower.Db.UserInfo;
+
 
 public class PersonalCenter extends Activity {
     ListView list;
+    AppDatabase db;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.personal_center);
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "userinfo").allowMainThreadQueries().build();
         list = (ListView) findViewById(R.id.list1);
+        /*从数据库获取数据*/
+        UserInfo userInfo = db.userInfoDao().getAll();
         String[] data = {
-                "昵称",
+                "昵称                               " + userInfo.name,
                 "个人信息",
                 "充值",
         };
@@ -43,8 +52,8 @@ public class PersonalCenter extends Activity {
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
             switch (((TextView) arg1).getText().toString()) {
                 case "昵称":
-                    Intent intent = new Intent(PersonalCenter.this, MainActivity.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(PersonalCenter.this, MainActivity.class);
+//                    startActivity(intent);
                     break;
                 case "个人信息":
                     Intent intent1 = new Intent(PersonalCenter.this, ModifyUserInformation.class);
